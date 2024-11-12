@@ -1,0 +1,82 @@
+.navbar {
+    background-color: #333;
+    padding: 1rem 2rem;
+    color: #fff;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+
+  /* Button Links Styling */
+.navbar-button {
+    padding: 0.5rem 1rem;
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar-button:hover {
+    background-color: #555;
+  }
+  
+  /* Three Dots Menu Icon */
+  .menu-icon {
+    display: none; /* Hidden by default */
+    font-size: 1.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #444;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    background-color: #444;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #555;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .navbar-links {
+      display: none; /* Hide links on smaller screens */
+    }
+  
+    .menu-icon {
+      display: block; /* Show the menu icon */
+    }
+  }

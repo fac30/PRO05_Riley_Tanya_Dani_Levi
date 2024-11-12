@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --font-family: Montserrat, sans-serif;
+    --font-size-base: 16px;
+    --padding-base: 1rem;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--primary-color);
+  }
+
+  html, body {
+    height: 100%;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+  }
+  
+  body {
+    padding: var(--padding-base);
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: var(--secondary-color);
+  }
+  
+  button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  /* Utility classes */
+.text-center {
+    text-align: center;
+  }
+  
+  .mt-2 {
+    margin-top: 1rem;
+  }
+  
+  .p-2 {
+    padding: 1rem;
+  }
