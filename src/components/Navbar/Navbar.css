@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #333;
+    background-color: #ffa559;
     padding: 1rem 2rem;
     color: #fff;
   }
@@ -26,7 +26,7 @@
   /* Button Links Styling */
 .navbar-button {
     padding: 0.5rem 1rem;
-    background-color: #444;
+    background-color: #002855;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -52,7 +52,7 @@
     position: absolute;
     top: 60px;
     right: 10px;
-    background-color: #444;
+    background-color: #002855;
     border-radius: 5px;
     overflow: hidden;
   }

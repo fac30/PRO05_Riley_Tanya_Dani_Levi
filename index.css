@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -5,11 +7,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
 
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
+    --primary-color: #002855;
+    --secondary-color: #ffa559;
     --font-family: Montserrat, sans-serif;
     --font-size-base: 16px;
     --padding-base: 1rem;
