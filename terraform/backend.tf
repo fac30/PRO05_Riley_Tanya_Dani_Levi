@@ -6,3 +6,5 @@ resource "aws_instance" "CookNest_instance" {
     Name = "cooknest_instance"
   }
 }
+
+
