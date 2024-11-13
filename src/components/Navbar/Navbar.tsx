@@ -27,11 +27,18 @@ export default function Navbar(): JSX.Element {
             Home
           </Link>
           <Link
-            to="/signup"
+            to="/login"
             className="navbar-button"
             aria-current={location.pathname === '/signup' ? 'page' : undefined}
           >
-            SignUp/LogIn
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="navbar-button"
+            aria-current={location.pathname === '/login' ? 'page' : undefined}
+          >
+            Register
           </Link>
         </div>
         {/* Three Dots Menu Icon */}
@@ -50,11 +57,18 @@ export default function Navbar(): JSX.Element {
               Home
             </Link>
             <Link
+              to="/login"
+              onClick={() => setMenuOpen(false)}
+              className="dropdown-item"
+            >
+              Login
+            </Link>
+            <Link
               to="/signup"
               onClick={() => setMenuOpen(false)}
               className="dropdown-item"
             >
-              SignUp/LogIn
+              Register
             </Link>
           </div>
         )}

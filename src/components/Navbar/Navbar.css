@@ -1,7 +1,9 @@
 .navbar {
-    background-color: #333;
-    padding: 1rem 2rem;
+    background-color: #ffffff;
+    /*padding: 1rem 1rem;*/
+    padding-bottom: 1rem;
     color: #fff;
+    border-bottom: 1px solid #659181;
   }
   
   .navbar-container {
@@ -26,15 +28,15 @@
   /* Button Links Styling */
 .navbar-button {
     padding: 0.5rem 1rem;
-    background-color: #444;
+    background-color: #145f47;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 25px;
   }
   
   .navbar-button:hover {
-    background-color: #555;
+    background-color: #659181;
+    color: #145f47;
   }
   
   /* Three Dots Menu Icon */
@@ -42,7 +44,7 @@
     display: none; /* Hidden by default */
     font-size: 1.5rem;
     color: #fff;
-    background: none;
+    background: #145f47;
     border: none;
     cursor: pointer;
   }
@@ -52,7 +54,7 @@
     position: absolute;
     top: 60px;
     right: 10px;
-    background-color: #444;
+    background-color: #002855;
     border-radius: 5px;
     overflow: hidden;
   }

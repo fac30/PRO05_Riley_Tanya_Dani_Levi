@@ -1,67 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
+
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
 
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
+    --primary-color: #145f47;
+    --secondary-color: #659181;
+    --text-color: #ffffff;
+    --background: #ffffff;
     --font-family: Montserrat, sans-serif;
-    --font-size-base: 16px;
+    --font-size-base: 14px;
     --padding-base: 1rem;
-  }
+}
   
-  body {
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     color: var(--primary-color);
-  }
-
-  html, body {
-    height: 100%;
-    line-height: 1.6;
-    background-color: #f4f4f9;
-  }
-  
-  body {
     padding: var(--padding-base);
-  }
+    line-height: 1.6;
+    background-color: var(--background);
+}
 
-  a {
+a {
     color: var(--primary-color);
     text-decoration: none;
-  }
+}
   
-  a:hover {
+a:hover {
     color: var(--secondary-color);
-  }
+}
   
-  button {
+button {
     background-color: var(--primary-color);
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
   
-  button:hover {
+button:hover {
     background-color: var(--secondary-color);
-  }
+}
 
-  h1 {
+h1 {
     font-size: 2rem;
-  }
+}
   
-  h2 {
+h2 {
     font-size: 1.5rem;
-  }
+}
   
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
     h1 {
       font-size: 2.5rem;
     }
@@ -69,17 +68,29 @@
     h2 {
       font-size: 2rem;
     }
-  }
+}
 
-  /* Utility classes */
+/* Utility classes */
 .text-center {
     text-align: center;
-  }
+}
   
-  .mt-2 {
+.mt-2 {
     margin-top: 1rem;
-  }
+}
   
-  .p-2 {
+.p-2 {
     padding: 1rem;
-  }
+}
+
+/* Make App the flex container, with Navbar and Footer as fixed elements */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/* Make main content grow to fill available space */
+.main-content {
+    flex-grow: 1;
+}

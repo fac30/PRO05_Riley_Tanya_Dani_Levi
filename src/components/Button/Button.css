@@ -1,0 +1,11 @@
+.button-class {
+    padding: 0.5rem 1rem;
+    background-color: #145f47;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+}
+.button-class:hover {
+    background-color: #659181;
+    color: #145f47;
+  }
