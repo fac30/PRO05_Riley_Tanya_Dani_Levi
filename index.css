@@ -9,8 +9,8 @@
 }
 
 :root {
-    --primary-color: #002855;
-    --secondary-color: #ffa559;
+    --primary-color: #145f47;
+    --secondary-color: #659181;
     --font-family: Montserrat, sans-serif;
     --font-size-base: 16px;
     --padding-base: 1rem;
@@ -25,7 +25,7 @@
   html, body {
     height: 100%;
     line-height: 1.6;
-    background-color: #f4f4f9;
+    background-color: #ffffff;
   }
   
   body {
