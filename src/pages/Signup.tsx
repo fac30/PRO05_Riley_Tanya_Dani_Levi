@@ -1,3 +1,8 @@
-export default function Home() {
-    return <h2>SignUp Page</h2>;
-  }
+export default function Example() {
+  return (
+          <h2>
+            Sign un to your account
+          </h2>
+
+  )
+}
