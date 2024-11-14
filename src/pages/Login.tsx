@@ -9,7 +9,7 @@ const Login: React.FC = () => {
   return (
     <div>
       <h2>
-        Sign up in your account
+        Log in to personalize your cooking adventure!
       </h2>
 
       <form>

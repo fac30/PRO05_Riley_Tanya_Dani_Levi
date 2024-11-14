@@ -11,7 +11,7 @@ const Signup: React.FC = () => {
   return (
     <div>
       <h2>
-        Register
+        Sign up on our website
       </h2>
 
       <form>
