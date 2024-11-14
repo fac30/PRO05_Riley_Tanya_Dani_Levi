@@ -13,6 +13,16 @@ const Signup: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!name || !email || !password) {
+      setError("All fields are required.");
+      return;
+    }
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
+
     try {
       await signup(name, email, password);
       alert('Signup successful!')
@@ -61,9 +71,10 @@ const Signup: React.FC = () => {
         />
         <Button 
           label="Create account"
+          type="submit"
         />
       </form>
-      {error && <p>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>   
   )
 }

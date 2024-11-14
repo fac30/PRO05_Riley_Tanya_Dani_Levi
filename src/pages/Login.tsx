@@ -11,6 +11,12 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      setError("Email and password are required.");
+      return;
+    }
+
     try {
       await login( email, password);
       alert('Login successful!');
@@ -49,9 +55,10 @@ const Login: React.FC = () => {
         />
         <Button 
           label="Get started"
+          type="submit"
         />
       </form>
-      {error && <p>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>   
   )
 }
