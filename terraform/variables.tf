@@ -22,3 +22,7 @@ variable "allowed_ips" {
   ]
 }
 
+variable "availability_zone" {
+  default     = "eu-west-2a"
+  description = "Where is our subnets going to live amongst our the AZ's"
+}
