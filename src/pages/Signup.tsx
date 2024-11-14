@@ -1,12 +1,26 @@
 import { useState } from "react";
 import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
+import { useAuth } from "../context/authContext";
 
 
 const Signup: React.FC = () => {
+  const { signup } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await signup(name, email, password);
+      alert('Signup successful!')
+    } catch (err) {
+      setError('Signup failed. Please try again.');
+      console.error(err);
+    }
+  }
 
   return (
     <div>
@@ -14,7 +28,7 @@ const Signup: React.FC = () => {
         Sign up on our website
       </h2>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input 
           label="Name"
           id="name"
@@ -47,9 +61,9 @@ const Signup: React.FC = () => {
         />
         <Button 
           label="Create account"
-          onClick={()=> alert('Button clicked!')}
         />
       </form>
+      {error && <p>{error}</p>}
     </div>   
   )
 }

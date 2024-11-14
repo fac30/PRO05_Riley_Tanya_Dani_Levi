@@ -2,13 +2,12 @@ import './Button.css';
 
 interface ButtonProps {
     label: string;
-    onClick: () => void;
     type?: 'button' | 'submit' | 'reset';
   }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, type = 'button' }) => {
+const Button: React.FC<ButtonProps> = ({ label, type = 'button' }) => {
     return (
-      <button type={type} onClick={onClick} className="button-class">
+      <button type={type} className="button-class">
         {label}
       </button>
     );
