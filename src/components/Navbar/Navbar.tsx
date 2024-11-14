@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import './Navbar.css';
+import logo from '../../assets/COOK-NEST.svg';
 
 export default function Navbar(): JSX.Element {
   const location = useLocation();
@@ -13,11 +14,13 @@ export default function Navbar(): JSX.Element {
   return (
     <header className="navbar">
       <nav className="navbar-container" aria-label="Main navigation">
-      <h1 className="navbar-brand">
-          <Link to="/" aria-label="Go to home page">CookNest</Link>
-        </h1>
+        <a title="cooke_nest_logo" href="/" className="navbar-logo">
+          <img src={logo} alt="Cooke Nest Logo" />
+        </a>
+      {/*<h1 className="navbar-brand">
+        <Link to="/" aria-label="Go to home page">CookNest</Link>
+      </h1>*/}
 
-        {/* Navigation Links */}
         <div className="navbar-links">
           <Link
             to="/"
@@ -38,7 +41,7 @@ export default function Navbar(): JSX.Element {
             className="navbar-button"
             aria-current={location.pathname === '/login' ? 'page' : undefined}
           >
-            Register
+            Sign-up
           </Link>
         </div>
         {/* Three Dots Menu Icon */}
@@ -68,7 +71,7 @@ export default function Navbar(): JSX.Element {
               onClick={() => setMenuOpen(false)}
               className="dropdown-item"
             >
-              Register
+              Sign-up
             </Link>
           </div>
         )}
