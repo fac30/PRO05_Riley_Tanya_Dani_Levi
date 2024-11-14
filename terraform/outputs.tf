@@ -3,7 +3,7 @@ output "ami_id" {
 }
 
 output "security" {
-  value = [for i in range(2) : var.allowed_ips[i]]
+  value     = [for i in range(2) : var.allowed_ips[i]]
   sensitive = true
 }
 
