@@ -19,3 +19,7 @@ output "db_security" {
 output "instance_type" {
   value = var.instance_type
 }
+
+output "region" {
+  value = "eu-west-2"
+}

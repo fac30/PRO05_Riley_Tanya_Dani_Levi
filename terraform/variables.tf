@@ -32,4 +32,15 @@ variable "availability_zone" {
   description = "Where is our subnets going to live amongst the AZ's"
 }
 
+variable "bucket" {
+  default = "cooknest-s3"
+  description = "name of bucket"
+}
+
+variable "region" {
+  default = "eu-west-2"
+}
+
+
+
 

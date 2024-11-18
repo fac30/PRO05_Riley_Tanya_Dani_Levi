@@ -38,7 +38,9 @@ resource "aws_instance" "CookNest_instance" {
   security_groups = [aws_security_group.cooknest_sec.name]
   key_name = "cooknest2"
 
-
+  lifecycle {
+    prevent_destroy = true
+    }
   tags = {
     Name = "cooknest_instance"
   }
