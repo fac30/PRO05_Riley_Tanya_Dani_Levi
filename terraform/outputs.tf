@@ -10,3 +10,12 @@ output "allowed_ips" {
 output "availability_zone" {
   value = var.availability_zone
 }
+
+output "db_security" {
+  value = var.aws_db_security
+  sensitive = true
+}
+
+output "instance_type" {
+  value = var.instance_type
+}
