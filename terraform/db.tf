@@ -38,6 +38,9 @@ resource "aws_instance" "db_instance" {
   security_groups = [aws_security_group.db_security.name]
   key_name = "db_instance_key"
 
+  lifecycle {
+    prevent_destroy = true
+    }
 
   tags = {
     Name = "db_instance"
