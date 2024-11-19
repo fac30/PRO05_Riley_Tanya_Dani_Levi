@@ -32,7 +32,7 @@ const Recipes: React.FC = () => {
         {recipes.map((recipe, index) => (
           <div key={index} className="recipe-card">
             <h2>{recipe.title}</h2>
-            <p><strong>Author:</strong> {recipe.userName}</p>
+            <p><strong>Author:</strong> {recipe.username}</p>
             <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
             <p><strong>Description:</strong> {recipe.description}</p>
             <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>

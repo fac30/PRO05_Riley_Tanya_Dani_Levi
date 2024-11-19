@@ -6,7 +6,7 @@ export interface Recipe {
   ingredients: string;
   description: string;
   cookingTime: number;
-  userName: string;
+  username: string;
 }
 
 // Base URL from environment variables or fallback to localhost
@@ -24,6 +24,7 @@ export const api = axios.create({
 export const fetchRecipes = async (): Promise<Recipe[]> => {
   try {
     const response = await api.get<Recipe[]>('/recipes');
+    console.log(response.data)
     return response.data; // Return data directly
   } catch (error: any) {
     console.error('Error fetching recipes:', error);
