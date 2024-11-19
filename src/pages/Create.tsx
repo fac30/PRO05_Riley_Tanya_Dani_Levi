@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../api/recipesApi'; // Import Axios instance or API function
 import Input from '../components/Input/Input'; // Adjust the path based on your project structure
 import './Create.css';
+import Button from '../components/Button/Button';
 
 const Create: React.FC = () => {
   const [title, setTitle] = useState('');
@@ -120,10 +121,10 @@ const Create: React.FC = () => {
           required
         />
 
-        {/* Submit Button */}
-        <button type="submit" className="btn">
-          Submit
-        </button>
+        <Button
+          label="Create recipe"
+          type="submit"
+          />
       </form>
     </div>
   );

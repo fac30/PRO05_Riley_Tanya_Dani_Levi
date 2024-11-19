@@ -71,6 +71,20 @@ export default function Navbar(): JSX.Element {
               Home
             </Link>
             <Link
+              to="/recipes"
+              onClick={() => setMenuOpen(false)}
+              className="dropdown-item"
+            >
+              Recipes
+            </Link>
+            <Link
+              to="/create"
+              onClick={() => setMenuOpen(false)}
+              className="dropdown-item"
+            >
+              Create
+            </Link>
+            <Link
               to="/login"
               onClick={() => setMenuOpen(false)}
               className="dropdown-item"
