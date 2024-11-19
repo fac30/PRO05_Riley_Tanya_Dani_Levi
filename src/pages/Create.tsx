@@ -1,90 +1,133 @@
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { api } from '../api/recipesApi'; // Import Axios instance or API function
+import Input from '../components/Input/Input'; // Adjust the path based on your project structure
 import './Create.css';
-import { useState, useRef, useEffect } from 'react';
+import Button from '../components/Button/Button';
 
-export default function Create() {
-  const [title, setTitle] = useState('')
-  const [method, setMethod] = useState('')
-  const [cookingTime, setCookingTime] = useState('')
-  const [newIngredient, setNewIngredient] = useState('')
-  const [ingredients, setIngredients] = useState([])
-  const ingredientInput = useRef(null)
+const Create: React.FC = () => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [cookingTime, setCookingTime] = useState<number | ''>('');
+  const [newIngredient, setNewIngredient] = useState('');
+  const [ingredients, setIngredients] = useState<string[]>([]);
+  const ingredientInput = useRef<HTMLInputElement>(null);
 
-  // const { postData, data } = useFetch('http://localhost:3000/recipes', 'POST')
-  // const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    //postData({ title, ingredients, method, cookingTime: cookingTime + ' minutes' })
-  }
+  const handleAddIngredient = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const trimmedIngredient = newIngredient.trim();
 
-  const handleAdd = (e) => {
-    e.preventDefault()
-    const ing = newIngredient.trim()
-
-    if (ing && !ingredients.includes(ing)) {
-      setIngredients(prevIngredients => [...prevIngredients, newIngredient])
+    if (trimmedIngredient && !ingredients.includes(trimmedIngredient)) {
+      setIngredients((prev) => [...prev, trimmedIngredient]);
     }
-    setNewIngredient('')
-    ingredientInput.current.focus()
-  }
 
-  useEffect(() => {
-    if (data) {
-      navigate('/')
+    setNewIngredient('');
+    ingredientInput.current?.focus();
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!title || !description || !cookingTime || ingredients.length === 0) {
+      alert('Please fill out all fields.');
+      return;
     }
-  }, [data, navigate])
+
+    try {
+      const newRecipe = {
+        title,
+        description,
+        cookingTime: Number(cookingTime),
+        ingredients,
+        userId: 2, // Replace with user context if available
+      };
+
+      // Post the recipe to the backend
+      await api.post('/recipes', newRecipe);
+
+      // Navigate to the recipes page on success
+      navigate('/recipes');
+    } catch (error: any) {
+      console.error('Error creating recipe:', error);
+      alert('Failed to create recipe. Please try again.');
+    }
+  };
 
   return (
-      <div className="create">
-      <h2 className="page-title">Add a New Recipe</h2>
+    <div className="create">
+      <h1>Add a New Recipe</h1>
       <form onSubmit={handleSubmit}>
 
-        <label>
-          <span>Recipe title:</span>
-          <input 
-            type="text" 
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            required
-          />
-        </label>
+        <Input
+          label="Recipe Title"
+          id="title"
+          name="title"
+          type="text"
+          placeholder="Enter recipe title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
 
+        {/* Ingredients */}
         <label>
-          <span>Recipe Ingredients:</span>
           <div className="ingredients">
-            <input 
-              type="text" 
-              onChange={(e) => setNewIngredient(e.target.value)}
+            <Input
+              label="Add Ingredient"
+              id="ingredient"
+              name="ingredient"
+              type="text"
+              placeholder="Enter an ingredient"
               value={newIngredient}
-              ref={ingredientInput}
+              onChange={(e) => setNewIngredient(e.target.value)}
+              autoComplete="off"
             />
-            <button onClick={handleAdd} className="btn">add</button>
+            <button onClick={handleAddIngredient} className="btn">
+              Add
+            </button>
           </div>
         </label>
-        <p>Current ingredients: {ingredients.map(i => <em key={i}>{i}, </em>)}</p>
+        <p>
+          Current ingredients:{' '}
+          {ingredients.map((ingredient) => (
+            <em key={ingredient}>{ingredient}, </em>
+          ))}
+        </p>
 
-        <label>
-          <span>Recipe Method:</span>
-          <textarea 
-            onChange={(e) => setMethod(e.target.value)}
-            value={method}
-            required
+        {/* Recipe Description */}
+            <Input
+              label="Recipe Description"
+              id="description"
+              name="description"
+              isTextarea={true}
+              placeholder="Describe the recipe..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              rows={5}
+            />
+
+        {/* Cooking Time */}
+        <Input
+          label="Cooking Time (minutes)"
+          id="cookingTime"
+          name="cookingTime"
+          type="number"
+          placeholder="Enter cooking time"
+          value={cookingTime.toString()}
+          onChange={(e) => setCookingTime(Number(e.target.value))}
+          required
+        />
+
+        <Button
+          label="Create recipe"
+          type="submit"
           />
-        </label>
-
-        <label>
-          <span>Cooking time (minutes):</span>
-          <input 
-            type="number" 
-            onChange={(e) => setCookingTime(e.target.value)}
-            value={cookingTime}
-            required 
-          />
-        </label>
-
-        <button className="btn">submit</button>
       </form>
     </div>
+  );
+};
 
-    )
-  }
+export default Create;

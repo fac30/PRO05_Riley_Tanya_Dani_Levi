@@ -4,12 +4,14 @@ interface InputProps {
     label: string;
     id?: string;
     name?: string;
-    type?: 'text' | 'email' | 'password' | 'name'; // Add other types as needed
+    type?: 'text' | 'email' | 'password' | 'name' | 'number'; // Add other types as needed
     placeholder?: string;
     value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     required?: boolean;
     autoComplete?: string;
+    isTextarea?: boolean; // New prop to toggle textarea
+    rows?: number;
   }
 
   const Input: React.FC<InputProps> = ({
@@ -22,24 +24,40 @@ interface InputProps {
     onChange,
     required = false,
     autoComplete = 'on',
+    isTextarea = false,
+    rows = 3,
   }) => {
     return (
       <div className="input-wrapper">
         <label  htmlFor={id} className="input-label">
           {label}
         </label>
-        <input
+        {isTextarea ? (
+        <textarea
           id={id}
           name={name}
-          type={type}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           required={required}
-          autoComplete={autoComplete}
-          className="input-field"
+          className="input-textarea"
+          rows={rows} // Apply the rows prop
           aria-describedby={id}
         />
+        ) : (
+          <input
+            id={id}
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            required={required}
+            autoComplete={autoComplete}
+            className="input-field"
+            aria-describedby={id}
+          />
+        )}
       </div>
     );
   };
