@@ -17,17 +17,28 @@ export default function Navbar(): JSX.Element {
         <a title="cooke_nest_logo" href="/" className="navbar-logo">
           <img src={logo} alt="Cooke Nest Logo" />
         </a>
-      {/*<h1 className="navbar-brand">
-        <Link to="/" aria-label="Go to home page">CookNest</Link>
-      </h1>*/}
 
         <div className="navbar-links">
           <Link
             to="/"
-            className="navbar-button"
+            className="navbar-button-white"
             aria-current={location.pathname === '/' ? 'page' : undefined}
           >
             Home
+          </Link>
+          <Link
+            to="/recipes"
+            className="navbar-button-white"
+            aria-current={location.pathname === '/recipes' ? 'page' : undefined}
+          >
+            Recipes
+          </Link>
+          <Link
+            to="/create"
+            className="navbar-button-white"
+            aria-current={location.pathname === '/create' ? 'page' : undefined}
+          >
+            Create
           </Link>
           <Link
             to="/login"

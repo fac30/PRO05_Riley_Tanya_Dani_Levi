@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import { useAuth } from "../context/authContext";
+import './Form.css';
 
 
 const Signup: React.FC = () => {
@@ -33,10 +34,10 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <div>
-      <h2>
+    <div className="form-container">
+      <h1>
         Sign up on our website
-      </h2>
+      </h1>
 
       <form onSubmit={handleSubmit}>
         <Input 
@@ -48,6 +49,7 @@ const Signup: React.FC = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          aria-describedby="name"
         />
         <Input 
           label="Email"
@@ -58,6 +60,7 @@ const Signup: React.FC = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          aria-describedby="email"
         />
         <Input 
           label="Password"
@@ -68,6 +71,7 @@ const Signup: React.FC = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          aria-describedby="password"
         />
         <Button 
           label="Create account"
