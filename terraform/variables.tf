@@ -14,7 +14,7 @@ variable "aws_security_group" {
 }
 
 variable "aws_db_security" {
-  default = "db_security"
+  default     = "db_security"
   description = "security for the database instance"
 }
 
@@ -33,7 +33,7 @@ variable "availability_zone" {
 }
 
 variable "bucket" {
-  default = "cooknest-s3"
+  default     = "cooknest-s3"
   description = "name of bucket"
 }
 

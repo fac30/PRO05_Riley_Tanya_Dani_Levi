@@ -12,7 +12,7 @@ output "availability_zone" {
 }
 
 output "db_security" {
-  value = var.aws_db_security
+  value     = var.aws_db_security
   sensitive = true
 }
 
