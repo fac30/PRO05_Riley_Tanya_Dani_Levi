@@ -1,5 +1,14 @@
 import axios from 'axios';
 
+export interface Recipe {
+  title: string;
+  userId: number;
+  ingredients: string;
+  description: string;
+  cookingTime: number;
+  userName: string;
+}
+
 // Base URL configuration (reuse if already defined)
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -11,13 +20,11 @@ const api = axios.create({
   },
 });
 
-// Fetch all recipes
-export const fetchRecipes = async () => {
+export const fetchRecipes = async (): Promise<Recipe[]> => {
   try {
-    const response = await api.get('/recipes');
-    return response.data; // Assuming backend responds with recipes in `data`
+    const response = await axios.get<Recipe[]>('http://localhost:5000/api/recipes');
+    return response.data; // Return data directly, as it already matches the desired structure
   } catch (error: any) {
-    // Handle errors gracefully
     throw new Error(error.response?.data?.message || 'Failed to fetch recipes');
   }
 };
