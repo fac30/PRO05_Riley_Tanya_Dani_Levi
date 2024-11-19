@@ -24,14 +24,31 @@
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
+
+  .input-textarea {
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #659181;
+    border-radius: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
   
   /* Change border color on focus */
   .input-field:focus {
     border-color: #145f47; /* Blue border on focus */
     box-shadow: 0 0 0 3px #659181; /* Light blue shadow */
   }
+  .input-textarea {
+    border-color: #145f47; /* Blue border on focus */
+    box-shadow: 0 0 0 3px #659181; /* Light blue shadow */
+  }
   
   /* Placeholder color */
   .input-field::placeholder {
+    color: #659181;
+  }
+  .input-textarea::placeholder {
     color: #659181;
   }
