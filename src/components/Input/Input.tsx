@@ -25,7 +25,7 @@ interface InputProps {
   }) => {
     return (
       <div className="input-wrapper">
-        <label htmlFor={id} className="input-label">
+        <label  htmlFor={id} className="input-label">
           {label}
         </label>
         <input
@@ -38,6 +38,7 @@ interface InputProps {
           required={required}
           autoComplete={autoComplete}
           className="input-field"
+          aria-describedby={id}
         />
       </div>
     );

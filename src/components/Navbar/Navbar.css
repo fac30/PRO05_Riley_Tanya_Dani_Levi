@@ -38,6 +38,20 @@
     background-color: #659181;
     color: #145f47;
   }
+
+.navbar-button-white {
+    padding: 0.5rem 1rem;
+    background-color: #ffffff;
+    color: #145f47;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+.navbar-button-white:hover {
+  background-color: #659181;
+  color: #ffffff;
+}
+
   
   /* Three Dots Menu Icon */
   .menu-icon {

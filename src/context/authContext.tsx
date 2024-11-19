@@ -36,7 +36,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const logout = () => {
     setUser(null);
-    // Optionally remove tokens from local storage or perform other cleanup
+    //remove tokens from local storage or perform other cleanup
   };
 
   return (

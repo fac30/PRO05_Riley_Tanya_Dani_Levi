@@ -27,7 +27,5 @@ export default function App(): JSX.Element {
       </Router>
       </div>
     </AuthProvider>
-    
-    
   );
 }
