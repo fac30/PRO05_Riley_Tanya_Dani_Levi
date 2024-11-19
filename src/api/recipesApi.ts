@@ -9,32 +9,35 @@ export interface Recipe {
   userName: string;
 }
 
-// Base URL configuration (reuse if already defined)
-// const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+// Base URL from environment variables or fallback to localhost
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5210';
 
-// // Axios instance
-// const api = axios.create({
-//   baseURL: API_BASE_URL,
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-// });
+// Axios instance for centralized configuration
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
+// Fetch all recipes
 export const fetchRecipes = async (): Promise<Recipe[]> => {
   try {
-    const response = await axios.get<Recipe[]>('http://localhost:5210/recipes');
-    return response.data; // Return data directly, as it already matches the desired structure
+    const response = await api.get<Recipe[]>('/recipes');
+    return response.data; // Return data directly
   } catch (error: any) {
+    console.error('Error fetching recipes:', error);
     throw new Error(error.response?.data?.message || 'Failed to fetch recipes');
   }
 };
 
-// // Export other recipe-related API functions as needed
-// export const fetchRecipeById = async (id: string) => {
-//   try {
-//     const response = await api.get(`/recipes/${id}`);
-//     return response.data;
-//   } catch (error: any) {
-//     throw new Error(error.response?.data?.message || 'Failed to fetch recipe');
-//   }
-// };
+// Fetch a recipe by ID (example for extensibility)
+export const fetchRecipeById = async (id: string): Promise<Recipe> => {
+  try {
+    const response = await api.get<Recipe>(`/recipes/${id}`);
+    return response.data;
+  } catch (error: any) {
+    console.error(`Error fetching recipe with ID ${id}:`, error);
+    throw new Error(error.response?.data?.message || 'Failed to fetch recipe');
+  }
+};
