@@ -56,9 +56,9 @@ const Create: React.FC = () => {
 
   return (
     <div className="create">
-      <h2 className="page-title">Add a New Recipe</h2>
+      <h1>Add a New Recipe</h1>
       <form onSubmit={handleSubmit}>
-        {/* Recipe Title */}
+
         <Input
           label="Recipe Title"
           id="title"
@@ -72,7 +72,6 @@ const Create: React.FC = () => {
 
         {/* Ingredients */}
         <label>
-          <span>Recipe Ingredients:</span>
           <div className="ingredients">
             <Input
               label="Add Ingredient"
@@ -97,17 +96,17 @@ const Create: React.FC = () => {
         </p>
 
         {/* Recipe Description */}
-        <label>
-          <span>Recipe Description:</span>
-          <textarea
-            id="description"
-            name="description"
-            placeholder="Describe the recipe..."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </label>
+            <Input
+              label="Recipe Description"
+              id="description"
+              name="description"
+              isTextarea={true}
+              placeholder="Describe the recipe..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              rows={5}
+            />
 
         {/* Cooking Time */}
         <Input
