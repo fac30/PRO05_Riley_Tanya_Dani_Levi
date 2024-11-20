@@ -92,9 +92,12 @@ const Create: React.FC = () => {
               onChange={(e) => setNewIngredient(e.target.value)}
               autoComplete="off"
             />
-            <button onClick={handleAddIngredient} className="btn">
-              Add
-            </button>
+            
+            <Button
+              label="Add"
+              type="button"
+              onClick={handleAddIngredient}
+            />
           </div>
         </label>
         <p>

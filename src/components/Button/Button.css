@@ -4,6 +4,7 @@
     color: #fff;
     text-decoration: none;
     border-radius: 25px;
+    cursor: pointer;
 }
 .button-class:hover {
     background-color: #659181;
