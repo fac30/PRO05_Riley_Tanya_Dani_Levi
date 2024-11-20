@@ -41,7 +41,7 @@ const Create: React.FC = () => {
     if (!title || !description || !cookingTime || ingredients.length === 0) {
       alert('Please fill out all fields.');
       return;
-    }
+    } 
 
     const newRecipe: NewRecipe = {
       title,
@@ -63,6 +63,16 @@ const Create: React.FC = () => {
     }
   };
 
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    action: (event?: React.MouseEvent<HTMLButtonElement> | React.FormEvent) => void
+  ) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      action(); // Call the action
+    }
+  };
+
   return (
     <div className="create">
       <h1>Add a New Recipe</h1>
@@ -81,7 +91,10 @@ const Create: React.FC = () => {
 
         {/* Ingredients */}
         <label>
-          <div className="ingredients">
+          <div 
+            className="ingredients" 
+            onKeyDown={(e) => handleKeyDown(e, () => handleAddIngredient())} 
+          >
             <Input
               label="Add Ingredient"
               id="ingredient"
@@ -132,10 +145,13 @@ const Create: React.FC = () => {
           required
         />
 
-        <Button
-          label="Create recipe"
-          type="submit"
+        <div onKeyDown={(e) => handleKeyDown(e, () => handleSubmit(e))}>
+          <Button
+            label="Create recipe"
+            type="submit"
           />
+        </div>
+        
       </form>
     </div>
   );
