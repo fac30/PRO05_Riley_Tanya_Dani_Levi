@@ -5,6 +5,14 @@ import Input from '../components/Input/Input'; // Adjust the path based on your 
 import './Create.css';
 import Button from '../components/Button/Button';
 
+interface NewRecipe {
+  title: string;
+  ingredients: string[];
+  description: string;
+  cookingTime: number;
+  userId: number;
+}
+
 const Create: React.FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -35,23 +43,23 @@ const Create: React.FC = () => {
       return;
     }
 
-    try {
-      const newRecipe = {
-        title,
-        description,
-        cookingTime: Number(cookingTime),
-        ingredients,
-        userId: 2, // Replace with user context if available
-      };
+    const newRecipe: NewRecipe = {
+      title,
+      ingredients,
+      description,
+      cookingTime: Number(cookingTime),
+      userId: 2, // Replace with dynamic user context if needed
+    };
 
+    try {
       // Post the recipe to the backend
       await api.post('/recipes', newRecipe);
 
       // Navigate to the recipes page on success
       navigate('/recipes');
     } catch (error: any) {
-      console.error('Error creating recipe:', error);
-      alert('Failed to create recipe. Please try again.');
+      console.error('Error creating recipe:', error.response?.data || error.message);
+      alert(error.response?.data?.message || 'Failed to create recipe. Please try again.');
     }
   };
 
@@ -84,9 +92,12 @@ const Create: React.FC = () => {
               onChange={(e) => setNewIngredient(e.target.value)}
               autoComplete="off"
             />
-            <button onClick={handleAddIngredient} className="btn">
-              Add
-            </button>
+            
+            <Button
+              label="Add"
+              type="button"
+              onClick={handleAddIngredient}
+            />
           </div>
         </label>
         <p>

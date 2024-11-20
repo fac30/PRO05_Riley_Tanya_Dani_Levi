@@ -9,6 +9,14 @@ export interface Recipe {
   username: string;
 }
 
+export interface NewRecipe {
+  title: string;
+  ingredients: string[];
+  description: string;
+  cookingTime: number;
+  userId: number;
+}
+
 // Base URL from environment variables or fallback to localhost
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5210';
 
@@ -32,13 +40,12 @@ export const fetchRecipes = async (): Promise<Recipe[]> => {
   }
 };
 
-// Fetch a recipe by ID (example for extensibility)
-export const fetchRecipeById = async (id: string): Promise<Recipe> => {
+// Create a new recipe
+export const createRecipe = async (newRecipe: NewRecipe): Promise<void> => {
   try {
-    const response = await api.get<Recipe>(`/recipes/${id}`);
-    return response.data;
+    await api.post('/recipes', newRecipe);
   } catch (error: any) {
-    console.error(`Error fetching recipe with ID ${id}:`, error);
-    throw new Error(error.response?.data?.message || 'Failed to fetch recipe');
+    console.error('Error creating recipe:', error);
+    throw new Error(error.response?.data?.message || 'Failed to create recipe');
   }
 };

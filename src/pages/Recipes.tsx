@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchRecipes, Recipe } from '../api/recipesApi';
+import './Recipes.css';
 
 const Recipes: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -27,15 +28,28 @@ const Recipes: React.FC = () => {
 
   return (
     <div className="recipes-page">
-      <h1>Recipes</h1>
-      <div className="recipes-list">
+      <h1 className="page-title">Recipes</h1>
+      <div className="recipes-grid" role="list">
         {recipes.map((recipe, index) => (
-          <div key={index} className="recipe-card">
-            <h2>{recipe.title}</h2>
-            <p><strong>Author:</strong> {recipe.username}</p>
-            <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
-            <p><strong>Description:</strong> {recipe.description}</p>
-            <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>
+          <div key={index} className="recipe-card" role="listitem" aria-label={`Recipe: ${recipe.title}`}>
+            <h2 className="recipe-title">{recipe.title}</h2>
+            <p className="recipe-author">
+              <strong>By:</strong> {recipe.username}
+            </p>
+            <div className="recipe-ingredients">
+              <strong>Ingredients:</strong>
+              <ul>
+                {recipe.ingredients.split(',').map((ingredient, idx) => (
+                  <li key={idx}>{ingredient.trim()}</li>
+                ))}
+              </ul>
+            </div>
+            <p className="recipe-instructions">
+              <strong>Instructions:</strong> {recipe.description}
+            </p>
+            <p className="recipe-cooking-time">
+              <strong>Cooking Time:</strong> {recipe.cookingTime} minutes
+            </p>
           </div>
         ))}
       </div>
