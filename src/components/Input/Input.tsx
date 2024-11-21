@@ -12,6 +12,7 @@ interface InputProps {
     autoComplete?: string;
     isTextarea?: boolean; // New prop to toggle textarea
     rows?: number;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   }
 
   const Input: React.FC<InputProps> = ({
@@ -26,6 +27,7 @@ interface InputProps {
     autoComplete = 'on',
     isTextarea = false,
     rows = 3,
+    onKeyDown,
   }) => {
     return (
       <div className="input-wrapper">
@@ -39,6 +41,7 @@ interface InputProps {
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onKeyDown={onKeyDown}
           required={required}
           className="input-textarea"
           rows={rows} // Apply the rows prop
@@ -52,6 +55,7 @@ interface InputProps {
             placeholder={placeholder}
             value={value}
             onChange={onChange}
+            onKeyDown={onKeyDown}
             required={required}
             autoComplete={autoComplete}
             className="input-field"

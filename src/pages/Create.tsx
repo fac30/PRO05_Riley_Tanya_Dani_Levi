@@ -41,7 +41,7 @@ const Create: React.FC = () => {
     if (!title || !description || !cookingTime || ingredients.length === 0) {
       alert('Please fill out all fields.');
       return;
-    }
+    } 
 
     const newRecipe: NewRecipe = {
       title,
@@ -81,7 +81,15 @@ const Create: React.FC = () => {
 
         {/* Ingredients */}
         <label>
-          <div className="ingredients">
+          <div 
+            className="ingredients" 
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleAddIngredient(e as unknown as React.MouseEvent<HTMLButtonElement>);
+              }
+            }}
+          >
             <Input
               label="Add Ingredient"
               id="ingredient"
@@ -91,6 +99,12 @@ const Create: React.FC = () => {
               value={newIngredient}
               onChange={(e) => setNewIngredient(e.target.value)}
               autoComplete="off"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                      e.preventDefault();
+                      handleAddIngredient(e as unknown as React.MouseEvent<HTMLButtonElement>);
+                }
+              }}
             />
             
             <Button
@@ -132,10 +146,13 @@ const Create: React.FC = () => {
           required
         />
 
-        <Button
-          label="Create recipe"
-          type="submit"
+        <div>
+          <Button
+            label="Create recipe"
+            type="submit"
           />
+        </div>
+        
       </form>
     </div>
   );
