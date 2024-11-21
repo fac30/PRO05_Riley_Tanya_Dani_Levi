@@ -63,16 +63,6 @@ const Create: React.FC = () => {
     }
   };
 
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLDivElement>,
-    action: (event?: React.MouseEvent<HTMLButtonElement> | React.FormEvent) => void
-  ) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      action(); // Call the action
-    }
-  };
-
   return (
     <div className="create">
       <h1>Add a New Recipe</h1>
@@ -93,7 +83,12 @@ const Create: React.FC = () => {
         <label>
           <div 
             className="ingredients" 
-            onKeyDown={(e) => handleKeyDown(e, () => handleAddIngredient())} 
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleAddIngredient(e as unknown as React.MouseEvent<HTMLButtonElement>);
+              }
+            }}
           >
             <Input
               label="Add Ingredient"
@@ -104,6 +99,12 @@ const Create: React.FC = () => {
               value={newIngredient}
               onChange={(e) => setNewIngredient(e.target.value)}
               autoComplete="off"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                      e.preventDefault();
+                      handleAddIngredient(e as unknown as React.MouseEvent<HTMLButtonElement>);
+                }
+              }}
             />
             
             <Button
@@ -145,7 +146,7 @@ const Create: React.FC = () => {
           required
         />
 
-        <div onKeyDown={(e) => handleKeyDown(e, () => handleSubmit(e))}>
+        <div>
           <Button
             label="Create recipe"
             type="submit"
