@@ -18,7 +18,7 @@ export interface NewRecipe {
 }
 
 // Base URL from environment variables or fallback to localhost
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5210';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://pro05-backend-riley-tanya-dani-levi.onrender.com';
 
 // Axios instance for centralized configuration
 export const api = axios.create({
